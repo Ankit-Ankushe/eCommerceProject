@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #menBox{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+            margin: auto;
+        }
+        #menBox>div{
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+        }
+        img{
+            height: 130px;
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <button>
+        <a href="./cart.html">My Cart</a>
+    </button>
+   <h1 style="text-decoration: underline;">Men's Collections</h1> 
+   <div id="menBox">
+
+   </div>
+</body>
+<script>
+    var mensData=[
+        {
+            image:"https://m.media-amazon.com/images/I/818Q44d7dNL._AC_UL480_QL65_.jpg",
+            productName:"Levi's Men's 511 Regular Fit Chino Jeans",
+            price:1119,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/51Z5PJWp-cL._AC_UL480_QL65_.jpg",
+            productName:"Yellow Chimes High Polish Stainless Steel Kadaa for Men",
+            price:399,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/615fBi41SoL._AC_UL480_QL65_.jpg",
+            productName:"Reebok Smartwatch- Full-Touch HD Display",
+            price:4499,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/61W1y+3D-8S._AC_UL480_QL65_.jpg",
+            productName:"Campus Men's OXYFIT (N) BLK Casual Shoes",
+            price:663,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/71mcY2boNVL._AC_UL480_QL65_.jpg",
+            productName:"ALAMOS Combo Pack of 2 edixo Cap",
+            price:272,
+        },
+        {
+            image:"https://images-eu.ssl-images-amazon.com/images/I/81SCsmkr+eL._AC_UL160_SR160,160_.jpg",
+            productName:"Campus Men's Running Shoes",
+            price:899,
+        },
+        {
+            image:"https://images-eu.ssl-images-amazon.com/images/I/71wR2K2OQSL._AC._SR360,460.jpg",
+            productName:"Rayon Cotton Lining Digital Printed Stitched Half Sleeve Shirt",
+            price:399,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/618Wek95laS._AC_UL480_QL65_.jpg",
+            productName:"Dennis Lingo Men's Classic Collar Casual Shirt",
+            price:645,
+        },
+        {
+            image:"https://images-eu.ssl-images-amazon.com/images/I/31hanUxDbvL._AC_SX184_.jpg",
+            productName:"The Souled Store Looney Tunes",
+            price:1101,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/71nogwKvgKL._AC_UL480_QL65_.jpg",
+            productName:"MUFTI Tartan Checks Blue Full Sleeves Double Pocket Shirt",
+            price:1424,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/61f4R5apNkL._AC_UL480_QL65_.jpg",
+            productName:"Puma Unisex-Adult Mirage MOX Vision Low Boot",
+            price:3359,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/7191eayn8ZL._AC_UL480_FMwebp_QL65_.jpg",
+            productName:"Unisex-Adult Lebron XVIII Basketball Shoe",
+            price:11310,
+        },
+        {
+            image:"https://images-eu.ssl-images-amazon.com/images/I/31C6ZjljKvL._AC_SX184_.jpg",
+            productName:"Fastrack Gradient Aviator Men's Sunglasses",
+            price:1620,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/61u7ZNKqnVL._AC_UL480_QL65_.jpg",
+            productName:"Men's Slim Fit Stretchable",
+            price:629,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/915NPMLKRDL._AC_UL480_QL65_.jpg",
+            productName:"NAPA HIDE Tan Crunch Leather Wallet for Men",
+            price:299,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/61gTjo31kgS._AC_UL480_QL65_.jpg",
+            productName:"Casio Edifice Analog Dial Men's Watch",
+            price:27995,
+        }
+    ]
+    var cartData; 
+    if(localStorage.getItem('cartData')==null){
+        cartData=[];
+     }else{
+        cartData= JSON.parse(localStorage.getItem("cartData"))
+     }
+    mensData.forEach(function(mendata){
+      var box=document.createElement("div");
+       
+      var img=document.createElement("img");
+      img.src=mendata.image;
+
+      var productName=document.createElement("p");
+      productName.innerText=mendata.productName;
+
+      var price=document.createElement("p")
+      price.innerText=mendata.price;
+
+      var cartButton=document.createElement("button");
+      cartButton.innerText="Add to cart";
+      
+      cartButton.addEventListener("click" , function(){
+        cartData.push(mendata);
+        console.log(cartData);
+        localStorage.setItem("cartData",JSON.stringify(cartData))
+      });
+
+      box.append(img,productName,price,cartButton);
+      document.querySelector("#menBox").append(box);
+  });
+
+ 
+</script>
+</html>

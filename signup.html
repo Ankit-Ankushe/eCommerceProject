@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            height: auto;
+            width: 400px;
+            border: 1px solid rgba(0, 0, 0, 0.47);
+            margin: auto;
+        }
+        #box>form{
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            font-size: 10px;
+        }
+        #box>h2{
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h2>Create Account</h2>
+        <form>
+            Your Name
+            <input type="text" placeholder="Your Name" id="userName"> <br>
+            Email
+            <input type="email" placeholder="email" id="userEmail"> <br>
+            Password
+            <input type="password" placeholder="Create Password" id="userPassword">
+            <br>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit",signupFunc);
+    var userDataList=[];
+    function signupFunc(){
+        event.preventDefault();
+        var userDataObj={
+            name: document.querySelector("#userName").value,
+            email: document.querySelector("#userEmail").value,
+            password: document.querySelector("#userPassword").value
+        }
+        userDataList.push(userDataObj);
+        localStorage.setItem("userData",JSON.stringify(userDataList));
+
+    }
+
+</script>
+</html>

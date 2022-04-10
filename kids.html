@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #kidBox{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+            margin: auto;
+        }
+        #kidBox>div{
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+        }
+        img{
+            height: 130px;
+            width: 90px;
+        }
+</style>
+</head>
+<body>
+    <button>
+        <a href="./cart.html">My Cart</a>
+    </button>
+    <h1 style="text-decoration: underline;">Kid's Collections</h1>
+    <div id="kidBox"></div>
+</body>
+<script>
+    var kidsData=[
+       {
+            image:"https://m.media-amazon.com/images/I/61EfHd3ktaL._AC_UL320_.jpg",
+            productName:"A.T.U.N. All Things Uber Nice Girl's Polyester Fit & Flare Dress",
+            price:800,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/71md4cJrNuL._AC_UL320_.jpg",
+            productName:"A.T.U.N Girl's Shirt Dress",
+            price:1294,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/81T7ekpugDL._AC_UL320_.jpg",
+            productName:"Indian Evergreen Girl's Midi Dungaree Dress",
+            price:499,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/91-YqF8J1bL._AC_UL320_.jpg",
+            productName:"T2F Boy's T-Shirt (Pack of 5)",
+            price:690,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/81XF6sp+-sL._AC_UL320_.jpg",
+            productName:"Boy's Regular T-Shirt",
+            price:299,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/91AWXE9wJES._AC_UL320_.jpg",
+            productName:"Lightwashed Denim Shorts",
+            price:599,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/A1BJN4OBOwS._AC_UL320_.jpg",
+            productName:"boys t-shirt",
+            price: 408,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/71+CbwaL2qL._AC_UL320_.jpg",
+            productName:"Girl's Ankle Length Long Boot,",
+            price:499,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/815dQOReS6L._AC_UL320_.jpg",
+            productName:"31 LTR Navy Blue School",
+            price:429,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/51ed2lKaq5L._AC_UL320_.jpg",
+            productName:"Bold N Elegant -",
+            price:599,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/61I2LwkWhWS._AC_UL320_.jpg",
+            productName:"EIO® New-Born Baby Boys and Baby Girls Kids Combo Packs",
+            price:799,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/61wRo-CEKXL._AC_UL320_.jpg",
+            productName:"Sheild 26 Ltrs Water Resistant Casual Backpack ",
+            price:1150,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/71Vv4dJsjrL._AC_UL320_.jpg",
+            productName:"TVESA Baby Girl JHABLA Frock Cotton",
+            price:499,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/41gUwTRRAgL._AC_UL320_.jpg",
+            productName:"Blue Tree Velvet Kids",
+            price:450,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/61EW3tDSMaL._AC_UL320_.jpg",
+            productName:"Rang Barse Holi Tshirt For Boys",
+            price:254,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/81-UZ+vX-oL._AC_UL320_.jpg",
+            productName:"Unisex Kid's Enzo Ac Ps Peacoat",
+            price:1489,
+        },
+    ]
+    if(localStorage.getItem('cartData')==null){
+        cartData=[];
+     }else{
+        cartData= JSON.parse(localStorage.getItem("cartData"))
+     }
+    kidsData.forEach(function(kiddata){
+      var box=document.createElement("div");
+       
+      var img=document.createElement("img");
+      img.src=kiddata.image;
+
+      var productName=document.createElement("p");
+      productName.innerText=kiddata.productName;
+
+      var price=document.createElement("p")
+      price.innerText=kiddata.price;
+
+      var cartButton=document.createElement("button");
+      cartButton.innerText="Add to cart";
+      cartButton.addEventListener("click" , function(){
+
+        cartData.push(kiddata);
+        console.log(cartData);
+        localStorage.setItem("cartData",JSON.stringify(cartData))
+      });
+
+      box.append(img,productName,price,cartButton);
+      document.querySelector("#kidBox").append(box);
+  })
+</script>
+</html>

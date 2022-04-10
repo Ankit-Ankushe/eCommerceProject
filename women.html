@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #womenBox{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+            margin: auto;
+        }
+        #womenBox>div{
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
+        }
+        img{
+            height: 130px;
+            width: 90px;
+        }
+    </style>
+</head>
+<body>
+    <button>
+        <a href="./cart.html">My Cart</a>
+    </button>
+    <h1 style="text-decoration:underline;">Women's Collections</h1>
+    <div id="womenBox"></div>
+</body>
+<script>
+    var womensData=
+    [
+        {
+            image:"https://m.media-amazon.com/images/I/71myHhy2zbL._AC_UL320_.jpg",
+            productName:"GoSriKi Women's Cotton Blend Kurta with Pant & Dupatta",
+            price:699,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/71qd2bTilrL._AC_UL320_.jpg",
+            productName:"BATA womens Aditi Tr Slipper",
+            price:455,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/51TQ5JLU7JS._AC_UL320_.jpg",
+            productName:"GoSriKi Women's Ruby Cotton Printed Straight Kurta with Palazzos & Dupatta",
+            price:699,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/613V3JGt-1S._AC_UL320_.jpg",
+            productName:"Jewels Galaxy Gold Plated Hoops Earrings Combo For Women/Girls",
+            price:259,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/81eTX8+s8hS._AC_UL320_.jpg",
+            productName:"EcoRight Large Tote Bag for Women with Zip, Stylish Cotton Handbags",
+            price:1474,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/81HyNOhHiuS._AC_UL320_.jpg",
+            productName:"Caprese Bailey Women's Tote Bag (Saddle)",
+            price:1453,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/91yUymrVuuL._AC_UL320_.jpg",
+            productName:"PERFECTBLUE Women's Blend Linen Saree with Unstitched Blouse Piece",
+            price:590,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/71nemPCGaSL._AC_UL320_.jpg",
+            productName:"Suneet Varma Designer Satin Floral",
+            price:2387,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/41IC93170uL._AC_SR160,160_.jpg",
+            productName:"CLARA Pure Real 925 Sterling Silver Adjustable Ring Band Gift for Women and Girls |",
+            price:1890,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/51GCuueZVKL._AC_UL320_.jpg",
+            productName:"Maybelline New York Color Sensational Creamy Matte Lipstick, 657 Nude Nuance, 3.9g.",
+            price:210,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/51ZLnSQonyL._AC_UL320_.jpg",
+            productName:"Lakmé Absolute Matte Melt Mini Liquid Lip Colour, Brown Souvenir, 2.4 ml",
+            price:330,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/31u56NS-qvL._AC_SR160,160_.jpg",
+            productName:"crocs womens Sloane Flat W Slipper",
+            price:1747,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/41D+ZFdWAdL._AC_SR160,160_.jpg",
+            productName:"crocs womens Kadee Printed Flat W Slipper",
+            price:1120,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/71myHhy2zbL._UX679_.jpg",
+            productName:"GoSriKi Women's Cotton Blend Kurta with Pant & Dupatta",
+            price:699,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/91BOfaa5IDL._AC_UL320_.jpg",
+            productName:"Women's Relaxed Jeans",
+            price:796,
+        },
+        {
+            image:"https://m.media-amazon.com/images/I/81xDT6loasL._AC_UL320_.jpg",
+            productName:"Women's Relaxed Jeans",
+            price:999,
+        },
+    ]
+    var cartData; 
+    if(localStorage.getItem('cartData')==null){
+        cartData=[];
+     }else{
+        cartData= JSON.parse(localStorage.getItem("cartData"))
+     }
+    womensData.forEach(function(womendata){
+      var box=document.createElement("div");
+       
+      var img=document.createElement("img");
+      img.src=womendata.image;
+
+      var productName=document.createElement("p");
+      productName.innerText=womendata.productName;
+
+      var price=document.createElement("p")
+      price.innerText=womendata.price;
+
+      var cartButton=document.createElement("button");
+      cartButton.innerText="Add to cart";
+      cartButton.addEventListener("click" , function(){
+        cartData.push(womendata);
+        console.log(cartData);
+        localStorage.setItem("cartData",JSON.stringify(cartData))
+
+      });
+
+      box.append(img,productName,price,cartButton);
+      document.querySelector("#womenBox").append(box);
+  })
+</script>
+</html>
